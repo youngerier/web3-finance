@@ -1,29 +1,65 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 
+// 资产历史数据
+const assetHistoryData = {
+  '24小时': {
+    labels: ['USDT', 'ETH', 'BTC', '其他'],
+    data: [45, 25, 20, 10],
+    values: [4200, 2300, 1850, 950],
+    changes: ['+0.24%', '+1.56%', '-0.87%', '+0.52%']
+  },
+  '7天': {
+    labels: ['USDT', 'ETH', 'BTC', '其他'],
+    data: [42, 28, 22, 8],
+    values: [4050, 2600, 2050, 750],
+    changes: ['+1.32%', '+5.21%', '-2.15%', '+3.87%']
+  },
+  '30天': {
+    labels: ['USDT', 'ETH', 'BTC', '其他'],
+    data: [38, 30, 25, 7],
+    values: [3650, 2850, 2350, 680],
+    changes: ['+3.12%', '+12.56%', '+5.32%', '+8.45%']
+  }
+};
+
+// 币种颜色映射
+const coinColors = {
+  'USDT': '#165DFF',
+  'ETH': '#722ED1',
+  'BTC': '#00C1D4',
+  '其他': '#334155'
+};
+
 const AssetChart = () => {
   const chartRef = useRef(null);
   const [timeRange, setTimeRange] = useState('7天');
+  const [activeAsset, setActiveAsset] = useState('USDT');
   
+  // 计算总资产值
+  const getTotalAssets = () => {
+    return assetHistoryData[timeRange].values.reduce((sum, val) => sum + val, 0).toFixed(2);
+  };
+
   useEffect(() => {
     // 销毁已存在的图表
     if (chartRef.current) {
       chartRef.current.destroy();
     }
     
+    const currentData = assetHistoryData[timeRange];
+    
     // 图表数据
     const data = {
-      labels: ['USDT', 'ETH', 'BTC', '其他'],
+      labels: currentData.labels,
       datasets: [{
-        data: [45, 25, 20, 10],
-        backgroundColor: [
-          '#165DFF',
-          '#722ED1',
-          '#00C1D4',
-          '#334155'
-        ],
+        data: currentData.data,
+        backgroundColor: currentData.labels.map(label => coinColors[label]),
         borderWidth: 0,
-        hoverOffset: 10
+        hoverOffset: 15,
+        hoverBackgroundColor: currentData.labels.map(label => 
+          label === activeAsset ? `${coinColors[label]}CC` : coinColors[label]
+        )
       }]
     };
     
@@ -34,22 +70,34 @@ const AssetChart = () => {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'right',
-            labels: {
-              color: '#94a3b8',
-              padding: 20,
-              font: {
-                size: 12
-              }
-            }
-          }
-        },
         cutout: '70%',
         animation: {
           animateScale: true,
           animateRotate: true
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const label = context.label || '';
+                const value = currentData.values[context.dataIndex] || 0;
+                const percentage = currentData.data[context.dataIndex] || 0;
+                return [
+                  `${label}: $${value.toFixed(2)}`,
+                  `占比: ${percentage}%`
+                ];
+              }
+            }
+          }
+        },
+        onHover: (event, elements) => {
+          if (elements.length) {
+            const index = elements[0].index;
+            setActiveAsset(currentData.labels[index]);
+          }
         }
       }
     };
@@ -64,44 +112,91 @@ const AssetChart = () => {
         chartRef.current.destroy();
       }
     };
-  }, [timeRange]);
+  }, [timeRange, activeAsset]);
+  
+  const currentData = assetHistoryData[timeRange];
   
   return (
-    <div className="gradient-border bg-dark-light p-6 mb-8">
+    <div className="gradient-border bg-dark-light p-6 md:p-8 mb-8">
+      {/* 标题与总资产 */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
         <div>
           <h3 className="text-lg font-bold mb-1">资产分布</h3>
           <p className="text-gray-400 text-sm">您的数字资产构成</p>
         </div>
-        <div className="mt-3 md:mt-0 flex space-x-2">
-          <button 
-            className={`text-sm px-3 py-1.5 rounded-md transition-colors ${
-              timeRange === '24小时' ? 'bg-primary/10 text-primary' : 'bg-dark-lighter hover:bg-dark-lighter/80'
-            }`}
-            onClick={() => setTimeRange('24小时')}
-          >
-            24小时
-          </button>
-          <button 
-            className={`text-sm px-3 py-1.5 rounded-md transition-colors ${
-              timeRange === '7天' ? 'bg-primary/10 text-primary' : 'bg-dark-lighter hover:bg-dark-lighter/80'
-            }`}
-            onClick={() => setTimeRange('7天')}
-          >
-            7天
-          </button>
-          <button 
-            className={`text-sm px-3 py-1.5 rounded-md transition-colors ${
-              timeRange === '30天' ? 'bg-primary/10 text-primary' : 'bg-dark-lighter hover:bg-dark-lighter/80'
-            }`}
-            onClick={() => setTimeRange('30天')}
-          >
-            30天
-          </button>
+        <div className="mt-3 md:mt-0 bg-dark p-3 rounded-lg">
+          <p className="text-gray-400 text-xs mb-1">总资产 (USDT)</p>
+          <p className="text-xl font-bold">{getTotalAssets()}</p>
         </div>
       </div>
-      <div className="h-64">
-        <canvas id="assetChart"></canvas>
+      
+      {/* 时间范围选择器 */}
+      <div className="flex justify-center mb-6">
+        <div className="inline-flex p-1 bg-dark rounded-lg">
+          {['24小时', '7天', '30天'].map(range => (
+            <button 
+              key={range}
+              className={`text-sm px-4 py-1.5 rounded-md transition-all ${
+                timeRange === range 
+                  ? 'bg-primary/10 text-primary font-medium' 
+                  : 'text-gray-400 hover:text-white'
+              }`}
+              onClick={() => setTimeRange(range)}
+            >
+              {range}
+            </button>
+          ))}
+        </div>
+      </div>
+      
+      {/* 图表与资产详情 */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+        {/* 环形图 */}
+        <div className="lg:col-span-2 h-64 md:h-80 relative">
+          <canvas id="assetChart"></canvas>
+          {/* 中心显示选中资产信息 */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <p className="text-gray-400 text-sm mb-1">{activeAsset} 占比</p>
+            <p className="text-3xl font-bold">
+              {currentData.data[currentData.labels.indexOf(activeAsset)]}%
+            </p>
+          </div>
+        </div>
+        
+        {/* 资产详情列表 */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-400">资产详情</h4>
+          <div className="space-y-3 max-h-64 overflow-y-auto pr-2">
+            {currentData.labels.map((label, index) => (
+              <div 
+                key={label}
+                className={`p-3 rounded-lg transition-all ${
+                  activeAsset === label ? 'bg-dark-lighter border border-primary/30' : 'bg-dark hover:bg-dark-lighter'
+                }`}
+                onClick={() => setActiveAsset(label)}
+              >
+                <div className="flex justify-between items-center mb-1">
+                  <div className="flex items-center">
+                    <div 
+                      className="w-3 h-3 rounded-full mr-2" 
+                      style={{ backgroundColor: coinColors[label] }}
+                    ></div>
+                    <span className="font-medium">{label}</span>
+                  </div>
+                  <span className={`text-sm ${
+                    currentData.changes[index].startsWith('+') ? 'text-success' : 'text-danger'
+                  }`}>
+                    {currentData.changes[index]}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400 text-sm">${currentData.values[index].toFixed(2)}</span>
+                  <span className="text-gray-400 text-sm">{currentData.data[index]}%</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
