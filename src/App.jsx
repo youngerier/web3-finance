@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import AssetOverview from './components/dashboard/AssetOverview';
@@ -33,8 +33,26 @@ const Dashboard = () => (
 );
 
 const App = () => {
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode === 'true' ? true : false;
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark-mode');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+    }
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(prevMode => !prevMode);
+  };
+
   return (
-    <Layout>
+    <Layout darkMode={darkMode} toggleDarkMode={toggleDarkMode}>
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/wallet" element={<WalletSection />} />

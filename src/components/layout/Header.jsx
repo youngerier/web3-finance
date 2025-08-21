@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ darkMode, toggleDarkMode }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -32,6 +32,14 @@ const Header = () => {
 
         {/* 用户区域 */}
         <div className="flex items-center space-x-4">
+          <button 
+            className="text-gray-300 hover:text-white transition-colors"
+            onClick={toggleDarkMode}
+            title={darkMode ? '切换到亮色模式' : '切换到深色模式'}
+          >
+            <i className={`fa ${darkMode ? 'fa-sun-o' : 'fa-moon-o'}`}></i>
+          </button>
+
           <button className="hidden md:flex items-center space-x-1 text-gray-300 hover:text-white transition-colors">
             <i className="fa fa-bell-o"></i>
             <span className="absolute top-2 right-24 w-2 h-2 bg-danger rounded-full"></span>

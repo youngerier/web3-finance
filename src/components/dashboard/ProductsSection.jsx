@@ -55,7 +55,7 @@ const ProductsSection = () => {
             className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100"
           >
             <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-semibold">{product.name}</h3>
+              <h3 className="text-xl text-black font-semibold">{product.name}</h3>
               <span className={`px-3 py-1 rounded-full text-sm ${
                 product.risk === '高风险' ? 'bg-red-100 text-red-600' :
                 product.risk === '中风险' ? 'bg-yellow-100 text-yellow-600' :
@@ -73,11 +73,11 @@ const ProductsSection = () => {
             <div className="border-t border-gray-100 pt-4 mb-4">
               <div className="flex justify-between text-sm mb-2">
                 <span className="text-gray-500">投资期限</span>
-                <span className="font-medium">{product.period}</span>
+                <span className="font-medium text-green-800	">{product.period}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">起投金额</span>
-                <span className="font-medium">{product.minInvestment} USDT</span>
+                <span className="font-medium text-green-800	">{product.minInvestment} USDT</span>
               </div>
             </div>
             
