@@ -163,10 +163,11 @@ const AssetChart = () => {
           </div>
         </div>
         
-        {/* 资产详情列表 */}
+        {/* 资产详情列表 - 移除滚动条 */}
         <div className="space-y-4">
           <h4 className="text-sm font-medium text-gray-400">资产详情</h4>
-          <div className="space-y-3 max-h-64 overflow-y-auto pr-2">
+          {/* 修改这里：移除 overflow-y-auto 和 max-h-64 属性 */}
+          <div className="space-y-3 pr-2">
             {currentData.labels.map((label, index) => (
               <div 
                 key={label}
