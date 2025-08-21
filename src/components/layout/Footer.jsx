@@ -12,7 +12,7 @@ const Footer = () => {
               </div>
               <h3 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">ChainVest</h3>
             </div>
-            <p className="text-gray-400 text-sm mb-4">去中心化金融理财平台，让您的数字资产实现增值</p>
+            <p className="text-gray-400 text-sm mb-4">Decentralized finance platform for growing your digital assets</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-primary transition-colors">
                 <i className="fa fa-twitter"></i>
@@ -30,38 +30,38 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-bold mb-4">产品</h4>
+            <h4 className="font-bold mb-4">Products</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">流动性挖矿</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">质押理财</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">NFT 投资</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">套利策略</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Liquidity Mining</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Staking</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">NFT Investment</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Arbitrage Strategies</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-bold mb-4">支持</h4>
+            <h4 className="font-bold mb-4">Support</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">帮助中心</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">安全中心</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Security Center</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-bold mb-4">法律</h4>
+            <h4 className="font-bold mb-4">Legal</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">服务条款</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">隐私政策</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">风险提示</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Risk Disclosure</a></li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">© 2025 ChainVest. 保留所有权利</p>
-          <p className="text-gray-500 text-sm mt-2 md:mt-0">投资有风险，理财需谨慎</p>
+          <p className="text-gray-500 text-sm">© 2025 ChainVest. All rights reserved</p>
+          <p className="text-gray-500 text-sm mt-2 md:mt-0">Investment involves risks, invest cautiously</p>
         </div>
       </div>
     </footer>

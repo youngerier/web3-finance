@@ -40,14 +40,14 @@ const WalletSection = () => {
   return (
     <section className="mb-12" id="wallet">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">我的钱包</h2>
+        <h2 className="text-2xl font-bold">My Wallet</h2>
         <button className="text-primary hover:text-primary/80 text-sm transition-colors flex items-center">
-          <span>查看全部</span>
+          <span>View All</span>
           <i className="fa fa-chevron-right ml-1 text-xs"></i>
         </button>
       </div>
 
-      {/* 代币列表 */}
+      {/* Token List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
         {tokens.map((token) => (
           <div 
@@ -69,7 +69,7 @@ const WalletSection = () => {
               </span>
             </div>
             <div className="mb-4">
-              <p className="text-gray-400 text-sm">余额</p>
+              <p className="text-gray-400 text-sm">Balance</p>
               <p className="text-xl font-bold">{token.balance} {token.name}</p>
               <p className="text-gray-400 text-sm mt-1">${token.usdValue}</p>
             </div>
@@ -78,10 +78,10 @@ const WalletSection = () => {
                 className="flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-sm py-2 rounded-lg transition-colors" 
                 onClick={() => openDepositModal(token.name)}
               >
-                充值
+                Deposit
               </button>
               <button className="flex-1 bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300 text-sm py-2 rounded-lg transition-colors">
-                提现
+                Withdraw
               </button>
             </div>
           </div>

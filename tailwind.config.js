@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         primary: '#165DFF',
-        secondary: '#722ED1', // 增加次要紫色，适合Web3平台
+        secondary: '#722ED1', // Add secondary purple color, suitable for Web3 platforms
         success: '#00B42A',
         danger: '#F53F3F',
         warning: '#FF7D00',
@@ -49,12 +49,12 @@ module.exports = {
         'spacing': 'margin, padding',
       },
       screens: {
-        'xs': '360px', // 增加小型设备适配
+        'xs': '360px', // Add small device support
       }
     },
   },
   plugins: [
-    // 增加自定义工具类
+    // Add custom utilities
     function ({ addUtilities }) {
       addUtilities({
         '.content-auto': {

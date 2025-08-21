@@ -19,7 +19,7 @@ const DepositModal = () => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-6 border-b border-gray-800 flex justify-between items-center">
-          <h3 className="text-xl font-bold" id="depositTokenName">充值 {currentToken}</h3>
+          <h3 className="text-xl font-bold" id="depositTokenName">Deposit {currentToken}</h3>
           <button className="text-gray-400 hover:text-white transition-colors" onClick={closeDepositModal}>
             <i className="fa fa-times"></i>
           </button>
@@ -27,7 +27,7 @@ const DepositModal = () => {
 
         <div className="p-6">
           <div className="mb-6">
-            <label className="block text-gray-400 text-sm mb-2">选择网络</label>
+            <label className="block text-gray-400 text-sm mb-2">Select Network</label>
             <div className="grid grid-cols-3 gap-3">
               <button
                 className={`${selectedNetworkType === 'ERC-20' ? 'bg-primary text-white' : 'bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300'} py-2 rounded-lg text-sm transition-colors`}
@@ -51,14 +51,14 @@ const DepositModal = () => {
           </div>
           
           <div className="mb-6">
-            <label className="block text-gray-400 text-sm mb-2">充值地址</label>
+            <label className="block text-gray-400 text-sm mb-2">Deposit Address</label>
             <div className="bg-dark rounded-lg p-3 font-mono text-sm mb-3 overflow-x-auto">
               0x71C97f2E5a8f53f8D27D38903046f8D27D389030
             </div>
             <div className="flex space-x-3">
               <button className="flex-1 bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300 py-2 rounded-lg text-sm transition-colors flex items-center justify-center">
                 <i className="fa fa-copy mr-2"></i>
-                复制地址
+                Copy Address
               </button>
               <button className="w-12 h-12 bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300 rounded-lg text-sm transition-colors flex items-center justify-center">
                 <i className="fa fa-qrcode"></i>
@@ -69,20 +69,20 @@ const DepositModal = () => {
           <div className="bg-dark p-4 rounded-lg mb-6">
             <h4 className="text-sm font-medium mb-2 flex items-center">
               <i className="fa fa-info-circle text-primary mr-2"></i>
-              充值须知
+              Deposit Notes
             </h4>
             <ul className="text-gray-400 text-sm space-y-2">
               <li className="flex items-start">
                 <i className="fa fa-check-circle text-success mt-1 mr-2"></i>
-                <span>请确认充值网络与您的钱包网络一致，否则资产可能丢失</span>
+                <span>Please ensure the deposit network matches your wallet network, otherwise assets may be lost</span>
               </li>
               <li className="flex items-start">
                 <i className="fa fa-check-circle text-success mt-1 mr-2"></i>
-                <span>充值到账需要一定数量的区块链确认，通常需要5-30分钟</span>
+                <span>Deposits require a certain number of blockchain confirmations, usually 5-30 minutes</span>
               </li>
               <li className="flex items-start">
                 <i className="fa fa-check-circle text-success mt-1 mr-2"></i>
-                <span>最低充值金额为 10 {currentToken}</span>
+                <span>Minimum deposit amount is 10 {currentToken}</span>
               </li>
             </ul>
           </div>
@@ -93,7 +93,7 @@ const DepositModal = () => {
             className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-medium transition-all" 
             onClick={closeDepositModal}
           >
-            我已完成充值
+            I Have Completed the Deposit
           </button>
         </div>
       </div>

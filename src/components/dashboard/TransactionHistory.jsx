@@ -4,46 +4,46 @@ const TransactionHistory = () => {
   const transactions = [
     {
       id: 1,
-      type: '充值',
+      type: 'Deposit',
       icon: <i className="fa fa-plus text-success text-sm"></i>,
       iconBg: 'bg-success/10',
       product: 'USDT',
       amount: '+5,000 USDT',
       time: '2023-06-15 14:30',
-      status: '已完成',
+      status: 'Completed',
       statusColor: 'bg-success/10 text-success'
     },
     {
       id: 2,
-      type: '购买',
+      type: 'Purchase',
       icon: <i className="fa fa-shopping-cart text-primary text-sm"></i>,
       iconBg: 'bg-primary/10',
-      product: 'DeFi 流动性挖矿',
+      product: 'DeFi Liquidity Mining',
       amount: '-2,000 USDT',
       time: '2023-06-10 09:15',
-      status: '已完成',
+      status: 'Completed',
       statusColor: 'bg-success/10 text-success'
     },
     {
       id: 3,
-      type: '收益',
+      type: 'Earnings',
       icon: <i className="fa fa-money text-accent text-sm"></i>,
       iconBg: 'bg-accent/10',
-      product: 'NFT 质押计划',
+      product: 'NFT Staking Plan',
       amount: '+156.25 USDT',
       time: '2023-06-05 00:00',
-      status: '已到账',
+      status: 'Received',
       statusColor: 'bg-success/10 text-success'
     },
     {
       id: 4,
-      type: '赎回',
+      type: 'Withdrawal',
       icon: <i className="fa fa-clock-o text-warning text-sm"></i>,
       iconBg: 'bg-warning/10',
-      product: '跨链套利策略',
+      product: 'Cross-chain Arbitrage Strategy',
       amount: '+3,250 USDT',
       time: '2023-05-28 16:45',
-      status: '处理中',
+      status: 'Processing',
       statusColor: 'bg-warning/10 text-warning'
     }
   ];
@@ -51,9 +51,9 @@ const TransactionHistory = () => {
   return (
     <section id="history" className="mb-12">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">交易记录</h2>
+        <h2 className="text-2xl font-bold">Transaction History</h2>
         <button className="text-primary hover:text-primary/80 text-sm transition-colors flex items-center">
-          <span>查看全部</span>
+          <span>View All</span>
           <i className="fa fa-chevron-right ml-1 text-xs"></i>
         </button>
       </div>
@@ -63,11 +63,11 @@ const TransactionHistory = () => {
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-800">
-                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">交易类型</th>
-                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">产品/币种</th>
-                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">金额</th>
-                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">时间</th>
-                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">状态</th>
+                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Transaction Type</th>
+                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Product/Currency</th>
+                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Amount</th>
+                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Time</th>
+                <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Status</th>
               </tr>
             </thead>
             <tbody>

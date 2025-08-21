@@ -1,72 +1,72 @@
 import React, { useState } from 'react';
 import PurchaseModal from '../modals/PurchaseModal';
-import { useModal } from '../../contexts/ModalContext'; // 新增导入
+import { useModal } from '../../contexts/ModalContext'; // New import
 
 const ProductsSection = () => {
-  const { openPurchaseModal, openRedeemModal } = useModal(); // 获取赎回模态框方法
+  const { openPurchaseModal, openRedeemModal } = useModal(); // Get redemption modal method
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  // 产品数据
+  // Product data
   const products = [
     { 
       id: 1, 
-      name: "DeFi 流动性挖矿", 
+      name: "DeFi Liquidity Mining", 
       returnRate: "12.5%", 
-      risk: "中风险", 
-      period: "灵活期限",
+      risk: "Medium Risk", 
+      period: "Flexible Term",
       minInvestment: 100 
     },
     { 
       id: 2, 
-      name: "NFT 质押计划", 
+      name: "NFT Staking Program", 
       returnRate: "18.2%", 
-      risk: "高风险", 
-      period: "90天",
+      risk: "High Risk", 
+      period: "90 days",
       minInvestment: 500 
     },
     { 
       id: 3, 
-      name: "稳定币收益聚合", 
+      name: "Stablecoin Yield Aggregator", 
       returnRate: "5.8%", 
-      risk: "低风险", 
-      period: "30天",
+      risk: "Low Risk", 
+      period: "30 days",
       minInvestment: 50 
     }
   ];
 
-  // 已购买的理财产品数据
+  // Purchased investment products data
   const purchasedProducts = [
-    {
-      id: 101,
-      productId: 1,
-      name: "DeFi 流动性挖矿 (12.5%)", // 包含收益率便于计算
-      amount: 2000,
-      purchaseDate: "2023-06-10",
-      endDate: "灵活期限",
-      currentEarnings: 45.25,
-      status: "持有中"
+    { 
+      id: 101, 
+      productId: 1, 
+      name: "DeFi Liquidity Mining (12.5%)", // Contains return rate for calculation
+      amount: 2000, 
+      purchaseDate: "2023-06-10", 
+      endDate: "Flexible Term", 
+      currentEarnings: 45.25, 
+      status: "Holding"
     },
-    {
-      id: 102,
-      productId: 3,
-      name: "稳定币收益聚合 (5.8%)", // 包含收益率便于计算
-      amount: 1000,
-      purchaseDate: "2023-05-20",
-      endDate: "2023-06-20",
-      currentEarnings: 48.33,
-      status: "持有中"
+    { 
+      id: 102, 
+      productId: 3, 
+      name: "Stablecoin Yield Aggregator (5.8%)", // Contains return rate for calculation
+      amount: 1000, 
+      purchaseDate: "2023-05-20", 
+      endDate: "2023-06-20", 
+      currentEarnings: 48.33, 
+      status: "Holding"
     }
   ];
   
   return (
     <section className="mb-12">
-      {/* 可购买理财产品 */}
+      {/* Available Investment Products */}
       <div className="mb-10">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">可投资产品</h2>
+          <h2 className="text-2xl font-bold">Available Products</h2>
           <button className="text-primary hover:text-primary/80 font-medium flex items-center">
-            查看全部 <i className="fa fa-arrow-right ml-2"></i>
+            View All <i className="fa fa-arrow-right ml-2"></i>
           </button>
         </div>
         
@@ -76,13 +76,13 @@ const ProductsSection = () => {
               key={product.id} 
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100"
             >
-              {/* 产品卡片内容保持不变 */}
+              {/* Product card content remains unchanged */}
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-xl text-black font-semibold">{product.name}</h3>
-                <span className={`px-3 py-1 rounded-full text-sm ${
-                  product.risk === '高风险' ? 'bg-red-100 text-red-600' :
-                  product.risk === '中风险' ? 'bg-yellow-100 text-yellow-600' :
-                  'bg-green-100 text-green-600'
+                <span className={`px-3 py-1 rounded-full text-sm ${ 
+                  product.risk === 'High Risk' ? 'bg-red-100 text-red-600' : 
+                  product.risk === 'Medium Risk' ? 'bg-yellow-100 text-yellow-600' : 
+                  'bg-green-100 text-green-600' 
                 }`}>
                   {product.risk}
                 </span>
@@ -90,16 +90,16 @@ const ProductsSection = () => {
               
               <div className="mb-6">
                 <p className="text-3xl font-bold text-primary">{product.returnRate}</p>
-                <p className="text-gray-500">预期年化收益</p>
+                <p className="text-gray-500">Expected Annual Return</p>
               </div>
               
               <div className="border-t border-gray-100 pt-4 mb-4">
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="text-gray-500">投资期限</span>
+                  <span className="text-gray-500">Investment Term</span>
                   <span className="font-medium text-indigo-900	">{product.period}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">起投金额</span>
+                  <span className="text-gray-500">Minimum Investment</span>
                   <span className="font-medium text-indigo-900	">{product.minInvestment} USDT</span>
                 </div>
               </div>
@@ -108,19 +108,19 @@ const ProductsSection = () => {
                 onClick={() => openPurchaseModal(product)}
                 className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-medium transition-colors"
               >
-                立即投资
+                Invest Now
               </button>
             </div>
           ))}
         </div>
       </div>
       
-      {/* 已购买的理财产品 */}
+      {/* My Investments */}
       <div>
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">我的投资</h2>
+          <h2 className="text-2xl font-bold">My Investments</h2>
           <button className="text-primary hover:text-primary/80 font-medium flex items-center">
-            查看全部 <i className="fa fa-arrow-right ml-2"></i>
+            View All <i className="fa fa-arrow-right ml-2"></i>
           </button>
         </div>
         
@@ -129,13 +129,13 @@ const ProductsSection = () => {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-800">
-                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">产品名称</th>
-                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">投资金额</th>
-                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">购买日期</th>
-                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">到期日期</th>
-                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">当前收益</th>
-                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">状态</th>
-                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">操作</th>
+                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Product Name</th>
+                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Investment Amount</th>
+                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Purchase Date</th>
+                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Maturity Date</th>
+                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Current Earnings</th>
+                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Status</th>
+                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -157,10 +157,10 @@ const ProductsSection = () => {
                     <td className="px-6 py-4">
                       <button 
                         className="text-primary hover:text-primary/80 text-sm transition-colors"
-                        disabled={product.status !== "持有中"}
-                        onClick={() => openRedeemModal(product)} // 打开赎回模态框
+                        disabled={product.status !== "Holding"}
+                        onClick={() => openRedeemModal(product)} // Open redemption modal
                       >
-                        赎回
+                        Redeem
                       </button>
                     </td>
                   </tr>

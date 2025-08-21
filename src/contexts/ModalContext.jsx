@@ -5,10 +5,10 @@ const ModalContext = createContext();
 export const ModalProvider = ({ children }) => {
   const [depositModalOpen, setDepositModalOpen] = useState(false);
   const [purchaseModalOpen, setPurchaseModalOpen] = useState(false);
-  const [redeemModalOpen, setRedeemModalOpen] = useState(false); // 新增赎回模态框状态
+  const [redeemModalOpen, setRedeemModalOpen] = useState(false); // Add redemption modal state
   const [currentToken, setCurrentToken] = useState('USDT');
   const [currentProduct, setCurrentProduct] = useState(null);
-  const [currentRedeemProduct, setCurrentRedeemProduct] = useState(null); // 新增赎回产品状态
+  const [currentRedeemProduct, setCurrentRedeemProduct] = useState(null); // Add redemption product state
 
   const openDepositModal = (token) => {
     setCurrentToken(token);
@@ -28,7 +28,7 @@ export const ModalProvider = ({ children }) => {
     setPurchaseModalOpen(false);
   };
 
-  // 新增赎回模态框方法
+  // Add redemption modal methods
   const openRedeemModal = (product) => {
     setCurrentRedeemProduct(product);
     setRedeemModalOpen(true);
@@ -42,16 +42,16 @@ export const ModalProvider = ({ children }) => {
     <ModalContext.Provider value={{
       depositModalOpen,
       purchaseModalOpen,
-      redeemModalOpen, // 导出赎回模态框状态
+      redeemModalOpen, // Export redemption modal state
       currentToken,
       currentProduct,
-      currentRedeemProduct, // 导出当前赎回产品
+      currentRedeemProduct, // Export current redemption product
       openDepositModal,
       closeDepositModal,
       openPurchaseModal,
       closePurchaseModal,
-      openRedeemModal, // 导出打开赎回模态框方法
-      closeRedeemModal // 导出关闭赎回模态框方法
+      openRedeemModal, // Export open redemption modal method
+      closeRedeemModal // Export close redemption modal method
     }}>
       {children}
     </ModalContext.Provider>

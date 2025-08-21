@@ -19,7 +19,7 @@ const PurchaseModal = () => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-6 border-b border-gray-800 flex justify-between items-center">
-          <h3 className="text-xl font-bold" id="productName">购买 {currentProduct.name}</h3>
+          <h3 className="text-xl font-bold" id="productName">Purchase {currentProduct.name}</h3>
           <button className="text-gray-400 hover:text-white transition-colors" onClick={closePurchaseModal}>
             <i className="fa fa-times"></i>
           </button>
@@ -28,31 +28,31 @@ const PurchaseModal = () => {
         <div className="p-6">
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
-              <span className="text-gray-400">预期年化收益率</span>
+              <span className="text-gray-400">Expected Annual Return</span>
               <span className="text-lg font-bold text-success" id="productRate">{currentProduct.rate}</span>
             </div>
             <div className="flex justify-between items-center mb-4">
-              <span className="text-gray-400">锁仓期限</span>
+              <span className="text-gray-400">Lock-up Period</span>
               <span className="font-medium" id="productTerm">{currentProduct.term}</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-gray-400">起投金额</span>
+              <span className="text-gray-400">Minimum Investment</span>
               <span className="font-medium" id="productMin">{currentProduct.min}</span>
             </div>
           </div>
           
           <div className="mb-6">
-            <label className="block text-gray-400 text-sm mb-2">选择币种</label>
+            <label className="block text-gray-400 text-sm mb-2">Select Currency</label>
             <div className="grid grid-cols-2 gap-3 mb-6">
               <button className="bg-primary text-white py-2 rounded-lg text-sm transition-colors">USDT</button>
               <button className="bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300 py-2 rounded-lg text-sm transition-colors">ETH</button>
             </div>
             
-            <label className="block text-gray-400 text-sm mb-2">投资金额</label>
+            <label className="block text-gray-400 text-sm mb-2">Investment Amount</label>
             <div className="relative mb-2">
               <input 
                 type="number" 
-                placeholder="请输入投资金额" 
+                placeholder="Enter investment amount" 
                 className="w-full bg-dark border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-primary transition-colors" 
                 min={parseInt(currentProduct.min)}
                 value={amount}
@@ -61,19 +61,19 @@ const PurchaseModal = () => {
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">USDT</span>
             </div>
             <div className="flex justify-between text-sm mb-6">
-              <span className="text-gray-400">可用余额: 8,342.15 USDT</span>
+              <span className="text-gray-400">Available Balance: 8,342.15 USDT</span>
               <button 
                 className="text-primary hover:text-primary/80 transition-colors"
                 onClick={() => setAmount('8342.15')}
               >
-                全部投入
+                All In
               </button>
             </div>
             
             <div className="bg-dark p-4 rounded-lg mb-6">
-              <h4 className="text-sm font-medium mb-3">收益预估</h4>
+              <h4 className="text-sm font-medium mb-3">Earnings Estimate</h4>
               <div className="flex justify-between items-center">
-                <span className="text-gray-400">到期总收益（预估）</span>
+                <span className="text-gray-400">Estimated Total Earnings (Upon Maturity)</span>
                 <span className="font-bold">
                   {amount 
                     ? `${(amount * parseFloat(currentProduct.rate) / 100 * parseInt(currentProduct.term) / 365).toFixed(2)} USDT`
@@ -91,7 +91,7 @@ const PurchaseModal = () => {
             onClick={closePurchaseModal}
             disabled={!amount || parseFloat(amount) < parseInt(currentProduct.min)}
           >
-            确认购买
+            Confirm Purchase
           </button>
         </div>
       </div>

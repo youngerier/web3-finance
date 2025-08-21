@@ -5,7 +5,7 @@ import Footer from './Footer';
 const Layout = ({ children, darkMode, toggleDarkMode }) => {
   return (
     <div className="bg-dark text-gray-100 font-inter min-h-screen flex flex-col overflow-x-hidden">
-      {/* 背景装饰 */}
+      {/* Background Decoration */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
         <div className="absolute top-1/3 -left-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl"></div>
