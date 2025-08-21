@@ -141,6 +141,7 @@ const ProductsSection = () => {
                   <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">到期日期</th>
                   <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">当前收益</th>
                   <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">状态</th>
+                  <th className="text-left px-6 py-4 text-gray-400 font-medium text-sm">操作</th>
                 </tr>
               </thead>
               <tbody>
@@ -159,6 +160,23 @@ const ProductsSection = () => {
                         {product.status}
                       </span>
                     </td>
+                      {/* 新增赎回按钮列 */}
+                      <td className="px-6 py-4">
+                        <button 
+                          className="text-primary hover:text-primary/80 text-sm transition-colors"
+                          // 只有"持有中"状态才允许赎回
+                          disabled={product.status !== "持有中"}
+                          onClick={() => {
+                            // 这里可以添加赎回逻辑或打开赎回模态框
+                            console.log(`赎回产品: ${product.name}, ID: ${product.id}`);
+                            // 实际应用中可以打开赎回确认模态框
+                            // openRedeemModal(product);
+                          }}
+                        >
+                          赎回
+                        </button>
+                      </td>
+
                   </tr>
                 ))}
               </tbody>
