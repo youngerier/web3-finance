@@ -59,7 +59,6 @@ const App = () => {
         <Route path="/wallet" element={<WalletSection />} />
         <Route path="/products" element={<ProductsSection />} />
         <Route path="/history" element={<TransactionHistory />} />
-        <Route path="/market" element={<div>市场动态</div>} />
       </Routes>
       
       {/* 模态框 */}

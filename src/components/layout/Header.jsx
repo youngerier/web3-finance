@@ -27,7 +27,6 @@ const Header = ({ darkMode, toggleDarkMode }) => {
           <NavLink to="/wallet" className={getLinkClass}>我的钱包</NavLink>
           <NavLink to="/products" className={getLinkClass}>理财产品</NavLink>
           <NavLink to="/history" className={getLinkClass}>交易记录</NavLink>
-          <NavLink to="/market" className={getLinkClass}>市场动态</NavLink>
         </nav>
 
         {/* 用户区域 */}
