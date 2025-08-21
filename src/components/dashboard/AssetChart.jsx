@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
-import { t } from '../../i18n.js';
 
 // Asset history data
 const assetHistoryData = {
