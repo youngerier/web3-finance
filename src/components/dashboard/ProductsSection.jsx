@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PurchaseModal from '../modals/PurchaseModal';
-import { useModal } from '../../contexts/ModalContext';
+import { useModal } from '../../contexts/ModalContext'; // 新增导入
 
 const ProductsSection = () => {
-  const { openPurchaseModal } = useModal();
+  const { openPurchaseModal, openRedeemModal } = useModal(); // 获取赎回模态框方法
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
@@ -40,7 +40,7 @@ const ProductsSection = () => {
     {
       id: 101,
       productId: 1,
-      name: "DeFi 流动性挖矿",
+      name: "DeFi 流动性挖矿 (12.5%)", // 包含收益率便于计算
       amount: 2000,
       purchaseDate: "2023-06-10",
       endDate: "灵活期限",
@@ -50,7 +50,7 @@ const ProductsSection = () => {
     {
       id: 102,
       productId: 3,
-      name: "稳定币收益聚合",
+      name: "稳定币收益聚合 (5.8%)", // 包含收益率便于计算
       amount: 1000,
       purchaseDate: "2023-05-20",
       endDate: "2023-06-20",
@@ -58,13 +58,6 @@ const ProductsSection = () => {
       status: "持有中"
     }
   ];
-  
-  // 打开购买模态框
-  const handleOpenPurchaseModal = (product) => {
-    setSelectedProduct(product);
-    setIsModalOpen(true);
-    openPurchaseModal(product);
-  };
   
   return (
     <section className="mb-12">
@@ -83,6 +76,7 @@ const ProductsSection = () => {
               key={product.id} 
               className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100"
             >
+              {/* 产品卡片内容保持不变 */}
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-xl text-black font-semibold">{product.name}</h3>
                 <span className={`px-3 py-1 rounded-full text-sm ${
@@ -102,16 +96,16 @@ const ProductsSection = () => {
               <div className="border-t border-gray-100 pt-4 mb-4">
                 <div className="flex justify-between text-sm mb-2">
                   <span className="text-gray-500">投资期限</span>
-                  <span className="font-medium text-indigo-900">{product.period}</span>
+                  <span className="font-medium text-indigo-900	">{product.period}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">起投金额</span>
-                  <span className="font-medium text-indigo-900">{product.minInvestment} USDT</span>
+                  <span className="font-medium text-indigo-900	">{product.minInvestment} USDT</span>
                 </div>
               </div>
               
               <button 
-                onClick={() => handleOpenPurchaseModal(product)}
+                onClick={() => openPurchaseModal(product)}
                 className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-medium transition-colors"
               >
                 立即投资
@@ -160,23 +154,15 @@ const ProductsSection = () => {
                         {product.status}
                       </span>
                     </td>
-                      {/* 新增赎回按钮列 */}
-                      <td className="px-6 py-4">
-                        <button 
-                          className="text-primary hover:text-primary/80 text-sm transition-colors"
-                          // 只有"持有中"状态才允许赎回
-                          disabled={product.status !== "持有中"}
-                          onClick={() => {
-                            // 这里可以添加赎回逻辑或打开赎回模态框
-                            console.log(`赎回产品: ${product.name}, ID: ${product.id}`);
-                            // 实际应用中可以打开赎回确认模态框
-                            // openRedeemModal(product);
-                          }}
-                        >
-                          赎回
-                        </button>
-                      </td>
-
+                    <td className="px-6 py-4">
+                      <button 
+                        className="text-primary hover:text-primary/80 text-sm transition-colors"
+                        disabled={product.status !== "持有中"}
+                        onClick={() => openRedeemModal(product)} // 打开赎回模态框
+                      >
+                        赎回
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -185,13 +171,7 @@ const ProductsSection = () => {
         </div>
       </div>
       
-      {isModalOpen && selectedProduct && (
-        <PurchaseModal 
-          product={selectedProduct} 
-          isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)} 
-        />
-      )}
+      <PurchaseModal />
     </section>
   );
 };

@@ -8,6 +8,7 @@ import ProductsSection from './components/dashboard/ProductsSection';
 import TransactionHistory from './components/dashboard/TransactionHistory';
 import DepositModal from './components/modals/DepositModal';
 import PurchaseModal from './components/modals/PurchaseModal';
+import RedeemModal from './components/modals/RedeemModal'; // 新增导入
 
 const Dashboard = () => (
   <>
@@ -64,6 +65,7 @@ const App = () => {
       {/* 模态框 */}
       <DepositModal />
       <PurchaseModal />
+      <RedeemModal /> {/* 新增赎回模态框 */}
     </Layout>
   );
 };
