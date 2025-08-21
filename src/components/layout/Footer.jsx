@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">© 2023 Web3 Finance. 保留所有权利</p>
+          <p className="text-gray-500 text-sm">© 2025 ChainVest. 保留所有权利</p>
           <p className="text-gray-500 text-sm mt-2 md:mt-0">投资有风险，理财需谨慎</p>
         </div>
       </div>
