@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useModal } from '../../contexts/ModalContext';
 
 const DepositModal = () => {
   const { depositModalOpen, currentToken, closeDepositModal } = useModal();
+  const [selectedNetworkType, setSelectedNetworkType] = useState('ERC-20'); // Initialize with a default
 
   if (!depositModalOpen) return null;
 
   return (
-    <div 
-      id="depositModal" 
+    <div
+      id="depositModal"
       className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center opacity-100 visible transition-all duration-300"
       onClick={closeDepositModal}
     >
-      <div 
-        className="bg-dark-light rounded-xl w-full max-w-md mx-4 transform scale-100 transition-all duration-300" 
+      <div
+        className="bg-dark-light rounded-xl w-full max-w-md mx-4 transform scale-100 transition-all duration-300 border border-gray-700"
         id="modalContent"
         onClick={(e) => e.stopPropagation()}
       >
@@ -23,14 +24,29 @@ const DepositModal = () => {
             <i className="fa fa-times"></i>
           </button>
         </div>
-        
+
         <div className="p-6">
           <div className="mb-6">
             <label className="block text-gray-400 text-sm mb-2">选择网络</label>
             <div className="grid grid-cols-3 gap-3">
-              <button className="bg-primary text-white py-2 rounded-lg text-sm transition-colors">ERC-20</button>
-              <button className="bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300 py-2 rounded-lg text-sm transition-colors">TRC-20</button>
-              <button className="bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300 py-2 rounded-lg text-sm transition-colors">BEP-20</button>
+              <button
+                className={`${selectedNetworkType === 'ERC-20' ? 'bg-primary text-white' : 'bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300'} py-2 rounded-lg text-sm transition-colors`}
+                onClick={() => setSelectedNetworkType('ERC-20')}
+              >
+                ERC-20
+              </button>
+              <button
+                className={`${selectedNetworkType === 'TRC-20' ? 'bg-primary text-white' : 'bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300'} py-2 rounded-lg text-sm transition-colors`}
+                onClick={() => setSelectedNetworkType('TRC-20')}
+              >
+                TRC-20
+              </button>
+              <button
+                className={`${selectedNetworkType === 'BEP-20' ? 'bg-primary text-white' : 'bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300'} py-2 rounded-lg text-sm transition-colors`}
+                onClick={() => setSelectedNetworkType('BEP-20')}
+              >
+                BEP-20
+              </button>
             </div>
           </div>
           
