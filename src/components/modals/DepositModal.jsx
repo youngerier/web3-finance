@@ -10,7 +10,7 @@ const DepositModal = () => {
   return (
     <div
       id="depositModal"
-      className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center opacity-100 visible transition-all duration-300"
+      className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center opacity-100 visible transition-all duration-300"
       onClick={closeDepositModal}
     >
       <div
