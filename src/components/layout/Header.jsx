@@ -27,7 +27,6 @@ const Header = ({ darkMode, toggleDarkMode }) => {
           <NavLink to="/wallet" className={getLinkClass}>My Wallet</NavLink>
           <NavLink to="/products" className={getLinkClass}>Investment Products</NavLink>
           <NavLink to="/history" className={getLinkClass}>Transaction History</NavLink>
-          <NavLink to="/market" className={getLinkClass}>Market Trends</NavLink>
         </nav>
 
         {/* User Area */}

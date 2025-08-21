@@ -52,8 +52,18 @@ const WalletSection = () => {
         {tokens.map((token) => (
           <div 
             key={token.name}
-            className="bg-dark-light rounded-xl p-5 hover:shadow-lg hover:shadow-primary/5 transition-all border border-gray-800"
+            className="bg-dark-light rounded-xl p-5 border border-gray-800
+                      hover:border-primary/30 transition-all duration-300
+                      shadow-lg shadow-black/5 hover:shadow-primary/5
+                      transform hover:-translate-y-1"
           >
+            {/* 添加顶部装饰条 */}
+            <div className={`absolute top-0 left-0 right-0 h-1 ${
+              token.name === 'USDT' ? 'bg-blue-500' :
+              token.name === 'ETH' ? 'bg-gray-500' :
+              'bg-orange-500'
+            }`}></div>
+
             <div className="flex justify-between items-start mb-4">
               <div className="flex items-center space-x-3">
                 <div className={`w-10 h-10 rounded-full ${token.bgColor} flex items-center justify-center`}>
@@ -64,15 +74,19 @@ const WalletSection = () => {
                   <p className="text-gray-400 text-sm">{token.fullName}</p>
                 </div>
               </div>
-              <span className={token.isPositive ? 'text-success text-sm' : 'text-danger text-sm'}>
+              <span className={`text-sm px-2 py-0.5 rounded-full ${
+                token.isPositive ? 'bg-success/10 text-success' : 'bg-danger/10 text-danger'
+              }`}>
                 {token.change}
               </span>
             </div>
+
             <div className="mb-4">
               <p className="text-gray-400 text-sm">Balance</p>
               <p className="text-xl font-bold">{token.balance} {token.name}</p>
               <p className="text-gray-400 text-sm mt-1">${token.usdValue}</p>
             </div>
+
             <div className="flex space-x-2">
               <button 
                 className="flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-sm py-2 rounded-lg transition-colors" 

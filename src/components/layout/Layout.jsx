@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './Header';
-import Footer from './Footer';
 
 const Layout = ({ children, darkMode, toggleDarkMode }) => {
   return (
@@ -16,7 +15,6 @@ const Layout = ({ children, darkMode, toggleDarkMode }) => {
       <main className="flex-1 container mx-auto px-4 py-6 md:py-10">
         {children}
       </main>
-      <Footer />
     </div>
   );
 };
