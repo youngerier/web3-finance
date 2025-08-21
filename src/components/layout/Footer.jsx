@@ -10,7 +10,7 @@ const Footer = () => {
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                 <i className="fa fa-link text-white text-sm"></i>
               </div>
-              <h3 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Web3 Finance</h3>
+              <h3 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">ChainVest</h3>
             </div>
             <p className="text-gray-400 text-sm mb-4">去中心化金融理财平台，让您的数字资产实现增值</p>
             <div className="flex space-x-4">

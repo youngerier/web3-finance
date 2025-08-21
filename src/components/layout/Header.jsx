@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const getLinkClass = ({ isActive }) => 
+    isActive 
+      ? 'text-primary font-medium hover:text-primary/80 transition-colors' 
+      : 'text-gray-300 hover:text-white transition-colors';
 
   return (
     <header className="glass-effect border-b border-gray-800 sticky top-0 z-50">
@@ -12,15 +18,16 @@ const Header = () => {
           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
             <i className="fa fa-link text-white text-xl"></i>
           </div>
-          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Web3 Finance</h1>
+          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">ChainVest</h1>
         </div>
 
         {/* 主导航 - 桌面版 */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#" className="text-primary font-medium hover:text-primary/80 transition-colors">首页</a>
-          <a href="#products" className="text-gray-300 hover:text-white transition-colors">理财产品</a>
-          <a href="#history" className="text-gray-300 hover:text-white transition-colors">交易记录</a>
-          <a href="#" className="text-gray-300 hover:text-white transition-colors">市场动态</a>
+          <NavLink to="/" className={getLinkClass}>首页</NavLink>
+          <NavLink to="/wallet" className={getLinkClass}>我的钱包</NavLink>
+          <NavLink to="/products" className={getLinkClass}>理财产品</NavLink>
+          <NavLink to="/history" className={getLinkClass}>交易记录</NavLink>
+          <NavLink to="/market" className={getLinkClass}>市场动态</NavLink>
         </nav>
 
         {/* 用户区域 */}
@@ -80,10 +87,11 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden glass-effect border-t border-gray-800">
           <nav className="container mx-auto px-4 py-3 flex flex-col space-y-4">
-            <a href="#" className="text-primary font-medium hover:text-primary/80 transition-colors py-2">首页</a>
-            <a href="#products" className="text-gray-300 hover:text-white transition-colors py-2">理财产品</a>
-            <a href="#history" className="text-gray-300 hover:text-white transition-colors py-2">交易记录</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors py-2">市场动态</a>
+            <NavLink to="/" className={getLinkClass} onClick={() => setIsMobileMenuOpen(false)}>首页</NavLink>
+            <NavLink to="/wallet" className={getLinkClass} onClick={() => setIsMobileMenuOpen(false)}>我的钱包</NavLink>
+            <NavLink to="/products" className={getLinkClass} onClick={() => setIsMobileMenuOpen(false)}>理财产品</NavLink>
+            <NavLink to="/history" className={getLinkClass} onClick={() => setIsMobileMenuOpen(false)}>交易记录</NavLink>
+            <NavLink to="/market" className={getLinkClass} onClick={() => setIsMobileMenuOpen(false)}>市场动态</NavLink>
           </nav>
         </div>
       )}

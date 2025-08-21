@@ -29,10 +29,6 @@ const Dashboard = () => (
       <AssetOverview />
       <AssetChart />
     </section>
-
-    <WalletSection />
-    <ProductsSection />
-    <TransactionHistory />
   </>
 );
 
@@ -41,6 +37,7 @@ const App = () => {
     <Layout>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/wallet" element={<WalletSection />} />
         <Route path="/products" element={<ProductsSection />} />
         <Route path="/history" element={<TransactionHistory />} />
         <Route path="/market" element={<div>市场动态</div>} />
