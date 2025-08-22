@@ -2,7 +2,7 @@ import React from 'react';
 import { useModal } from '../../contexts/ModalContext';
 
 const WalletSection = () => {
-  const { openDepositModal } = useModal();
+  const { openDepositModal, openWithdrawModal } = useModal();
   
   const tokens = [
     {
@@ -94,7 +94,7 @@ const WalletSection = () => {
               >
                 Deposit
               </button>
-              <button className="flex-1 bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300 text-sm py-2 rounded-lg transition-colors">
+              <button className="flex-1 bg-dark-lighter hover:bg-dark-lighter/80 text-gray-300 text-sm py-2 rounded-lg transition-colors" onClick={() => openWithdrawModal(token.name)}>
                 Withdraw
               </button>
             </div>

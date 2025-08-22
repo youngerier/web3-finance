@@ -121,11 +121,11 @@ const AssetChart = () => {
       {/* 标题与总资产 */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
         <div>
-          <h3 className="text-lg font-bold mb-1">Asset Distribution</h3>
+          <h3 className="text-lg font-bold mb-1">Asset Dashboard</h3>
           <p className="text-gray-400 text-sm">Your Digital Asset Composition</p>
         </div>
         <div className="mt-3 md:mt-0 bg-dark p-3 rounded-lg">
-          <p className="text-gray-400 text-xs mb-1">Total Assets USDT</p>
+          <p className="text-gray-400 text-xs mb-1">Total Assets USD</p>
           <p className="text-xl font-bold">{getTotalAssets()}</p>
         </div>
       </div>

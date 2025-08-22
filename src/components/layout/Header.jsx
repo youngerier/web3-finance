@@ -15,10 +15,10 @@ const Header = ({ darkMode, toggleDarkMode }) => {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Brand Logo */}
         <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-            <i className="fa fa-link text-white text-xl"></i>
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+            <img src="/interlace.png" alt="interlace logo" className="w-8 h-8 object-contain" />
           </div>
-          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">ChainVest</h1>
+          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">interlace</h1>
         </div>
 
         {/* Main Navigation - Desktop */}

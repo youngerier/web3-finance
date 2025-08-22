@@ -9,6 +9,7 @@ import TransactionHistory from './components/dashboard/TransactionHistory';
 import DepositModal from './components/modals/DepositModal';
 import PurchaseModal from './components/modals/PurchaseModal';
 import RedeemModal from './components/modals/RedeemModal'; // Added import
+import WithdrawModal from './components/modals/WithdrawModal';
 
 const Dashboard = () => (
   <>
@@ -18,12 +19,6 @@ const Dashboard = () => (
         <div>
           <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-2">Welcome back, User</h2>
           <p className="text-gray-400">Grow your digital assets</p>
-        </div>
-        <div className="mt-4 md:mt-0">
-          <button className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-medium transition-all shadow-lg shadow-primary/20 flex items-center">
-            <i className="fa fa-plus-circle mr-2"></i>
-            Deposit Assets
-          </button>
         </div>
       </div>
 
@@ -66,6 +61,7 @@ const App = () => {
       <DepositModal />
       <PurchaseModal />
       <RedeemModal /> {/* 新增赎回模态框 */}
+      <WithdrawModal />
     </Layout>
   );
 };
